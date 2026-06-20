@@ -1,0 +1,5 @@
+# tfhe 1.5.4 (the version the Zama relayer/coprocessors accept) has MSRV 1.91.1
+# and its `tfhe-versionable 0.7.0` derive does not yet compile on Rust 1.95+.
+# Pin to the declared MSRV so prover output matches the network's verifier.
+[toolchain]
+channel = "1.91.1"

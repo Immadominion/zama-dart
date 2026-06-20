@@ -1,0 +1,25 @@
+name: zama_fhe_ffi
+description: >-
+  Native crypto backend for the Zama Protocol Dart SDK. Binds the tfhe-rs based
+  `zama_fhe_native` Rust library via dart:ffi to provide TFHE encryption + ZK
+  proof generation (and, later, ML-KEM user-decryption) on mobile/desktop.
+version: 0.0.1
+repository: https://github.com/zama-ai/relayer-sdk
+license: BSD-3-Clause-Clear
+# Not published yet: depends on sibling `zama_fhe` by path during monorepo dev.
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  ffi: ^2.1.0
+  zama_fhe:
+    path: ../zama_fhe
+
+dev_dependencies:
+  test: ^1.25.0
+  lints: ^5.0.0
+  # For the gated on-chain M1 integration test.
+  web3dart: ^3.0.0
+  http: ^1.2.0

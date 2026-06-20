@@ -1,0 +1,35 @@
+[package]
+name = "zama_fhe_native"
+version = "0.0.1"
+edition = "2021"
+publish = false
+
+[lib]
+name = "zama_fhe_native"
+# cdylib: loaded from Dart via dart:ffi on desktop/Android.
+# staticlib: linked into the iOS xcframework later.
+# rlib: lets the on-device `selftest` bin link against the lib.
+crate-type = ["cdylib", "staticlib", "rlib"]
+
+[dependencies]
+# Pin EXACTLY to the version the Zama relayer/coprocessors expect (the JS SDK
+# ships tfhe 1.5.4) — a different version produces proofs their verifier rejects.
+# default-features = false is REQUIRED on ARM (default `avx512` is x86-only).
+tfhe = { version = "=1.5.4", default-features = false, features = ["integer", "zk-pok"] }
+# Pin zk-pok to the exact version tfhe 1.5.4 shipped with. Cargo otherwise
+# upgrades it to 0.8.2, which pulls a second `tfhe-versionable` (0.8.0) and
+# breaks tfhe 1.5.4's `Versionize` derive (two versionable versions in-tree).
+tfhe-zk-pok = "=0.8.0"
+
+# blake3 (pulled in transitively by tfhe) compiles a NEON C file on aarch64 by
+# default, which requires the NDK C compiler. Force its pure-Rust path for the
+# Android cross-build so the toolchain needs no C compiler at all (negligible
+# perf cost — blake3 is not the FHE bottleneck). The host build keeps C/NEON.
+[target.'cfg(target_os = "android")'.dependencies]
+blake3 = { version = "1", features = ["no_neon"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true

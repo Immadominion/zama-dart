@@ -1,0 +1,26 @@
+name: zama_fhe
+description: >-
+  Pure-Dart client for the Zama Protocol (fhEVM): network configs, ciphertext
+  handle computation, FHE type system, and EIP-712 typed-data builders for
+  user/public decryption. The cryptographic engine (TFHE encryption + ZK proof,
+  ML-KEM user decryption) is provided by separate native/web backends.
+version: 0.0.1
+repository: https://github.com/zama-ai/relayer-sdk
+license: BSD-3-Clause-Clear
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  # Keccak-256 (Ethereum variant), used for handle + EIP-712 hashing.
+  pointycastle: ^4.0.0
+  # Cross-platform HTTP (native + web) for the relayer client.
+  http: ^1.2.0
+  # EVM RPC, ABI encoding, tx signing for the on-chain confidential calls.
+  web3dart: ^3.0.0
+  # Provides `EthereumAddress` (web3dart uses it but doesn't re-export it).
+  wallet: ^0.0.18
+
+dev_dependencies:
+  test: ^1.25.0
+  lints: ^5.0.0

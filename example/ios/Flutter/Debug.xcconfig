@@ -1,0 +1,9 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "Generated.xcconfig"
+
+// Link the native Zama FHE static lib (simulator slice) into the Runner so its
+// C ABI symbols are present in-process for DynamicLibrary.process(). force_load
+// keeps the symbols from being dead-stripped. (Device builds use the device .a /
+// the xcframework; this entry targets the simulator for the integration test.)
+ZAMA_FHE_LIB=$(SRCROOT)/../../packages/zama_fhe_ffi/rust/target/aarch64-apple-ios-sim/release/libzama_fhe_native.a
+OTHER_LDFLAGS=$(inherited) -force_load $(ZAMA_FHE_LIB)

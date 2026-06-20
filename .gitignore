@@ -1,0 +1,72 @@
+# ─────────────────────────────────────────────────────────────
+# Secrets — NEVER commit
+# ─────────────────────────────────────────────────────────────
+.secrets/
+**/.env
+**/.env.*
+!**/.env.example
+
+# ─────────────────────────────────────────────────────────────
+# Vendored Zama KMS repo (5.5 GB, separate license, build per
+# packages/zama_fhe_ffi/native_kms/README.md). The original wrapper
+# source is preserved under packages/zama_fhe_ffi/native_kms/.
+# ─────────────────────────────────────────────────────────────
+native/
+
+# Exploratory benchmark spike (large target dirs)
+spike/
+
+# Owner-local planning doc
+ROADMAP.md
+
+# ─────────────────────────────────────────────────────────────
+# Build artifacts
+# ─────────────────────────────────────────────────────────────
+**/target/
+**/build/
+**/.dart_tool/
+**/.packages
+**/pubspec.lock
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/node_modules/
+**/.gradle/
+**/android/local.properties
+**/android/.gradle/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/Flutter/Generated.xcconfig
+.cargo/registry/
+
+# ─────────────────────────────────────────────────────────────
+# Prebuilt native binaries — built from source (see README) or
+# shipped via GitHub Releases; not tracked in git.
+# ─────────────────────────────────────────────────────────────
+*.so
+*.a
+*.dylib
+*.dll
+**/*.xcframework/
+example/android/app/src/main/jniLibs/
+
+# ─────────────────────────────────────────────────────────────
+# Hardhat (m1-deploy) generated
+# ─────────────────────────────────────────────────────────────
+m1-deploy/artifacts/
+m1-deploy/cache/
+m1-deploy/types/
+m1-deploy/fhevmTemp/
+m1-deploy/coverage/
+m1-deploy/coverage.json
+
+# ─────────────────────────────────────────────────────────────
+# IDE / OS
+# ─────────────────────────────────────────────────────────────
+.idea/
+*.iml
+.vscode/
+.DS_Store

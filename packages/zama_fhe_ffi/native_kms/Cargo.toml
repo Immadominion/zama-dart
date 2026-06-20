@@ -1,0 +1,20 @@
+[package]
+name = "zama_kms_ffi"
+version = "0.0.1"
+edition = "2021"
+publish = false
+
+# Native FFI to the Zama KMS client (ML-KEM-512 keygen + user-decryption).
+# Built as a member of the vendored kms workspace (native/kms) so it shares the
+# repo's pinned Cargo.lock + Rust 1.94.0 — a loose dep hits a winnow conflict.
+[lib]
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[dependencies]
+# Lean kms client (no `non-wasm` server stack) → exposes the pub `js_api`.
+kms = { path = "../core/service", default-features = false }
+kms-grpc = { workspace = true }
+bc2wrap = { workspace = true }
+alloy-primitives = { workspace = true }
+hex = { workspace = true }
+serde_json = { workspace = true }
