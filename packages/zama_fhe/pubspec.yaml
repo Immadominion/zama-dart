@@ -5,8 +5,16 @@ description: >-
   user/public decryption. The cryptographic engine (TFHE encryption + ZK proof,
   ML-KEM user decryption) is provided by separate native/web backends.
 version: 0.0.1
-repository: https://github.com/zama-ai/relayer-sdk
+repository: https://github.com/Immadominion/zama-dart
+homepage: https://github.com/Immadominion/zama-dart
+issue_tracker: https://github.com/Immadominion/zama-dart/issues
 license: BSD-3-Clause-Clear
+topics:
+  - fhe
+  - fhevm
+  - zama
+  - encryption
+  - web3
 
 environment:
   sdk: ^3.6.0
