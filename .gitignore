@@ -19,6 +19,9 @@ spike/
 # Owner-local planning doc
 ROADMAP.md
 
+# Owner-local demo runner (absolute paths + sources .secrets/)
+run_demo.sh
+
 # ─────────────────────────────────────────────────────────────
 # Build artifacts
 # ─────────────────────────────────────────────────────────────
