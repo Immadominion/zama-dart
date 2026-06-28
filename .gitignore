@@ -22,6 +22,9 @@ ROADMAP.md
 # Owner-local demo runner (absolute paths + sources .secrets/)
 run_demo.sh
 
+# Owner-local grant submission package
+SUBMISSION.md
+
 # ─────────────────────────────────────────────────────────────
 # Build artifacts
 # ─────────────────────────────────────────────────────────────
